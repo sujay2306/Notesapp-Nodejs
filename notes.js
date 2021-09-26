@@ -25,9 +25,7 @@ const addNote = (title, body)=> {
 
 const removeNote = (title)=>{
 const notes = loadNotes()
-const notesTokeep = notes.filter((note)=>{
-    return note.title!==title
-})
+const notesTokeep = notes.filter((note)=> note.title!==title)
 
 saveNotes(notesTokeep)
 if(notes.length>notesTokeep){
@@ -45,7 +43,7 @@ const saveNotes = function (notes) {
     fs.writeFileSync('notes.json', dataJSON)
 }
 
-const loadNotes = function () {
+const loadNotes = ()=> {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
         const dataJSON = dataBuffer.toString()
